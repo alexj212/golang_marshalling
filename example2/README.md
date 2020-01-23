@@ -14,26 +14,38 @@ type Person struct {
 }
 
 
-var Alex = &Person{
-	FirstName: "Alex",
-	LastName:  "Jeannopoulos",
-	Email:     "alexj@backpocket.com",
-	City:      "Plantation",
+var Homer = &Person{
+	FirstName: "Homer",
+	LastName:  "Simpson",
+	Email:     "homer@simpsons.com",
+	City:      "Springfield",
 	Country:   "USA",
-	Age:       48,
+	Age:       36,
 }
 
-File Name:         person.xml
-Size:              122
-Permissions:       -rw-rw-r--
-Last Modified:     2020-01-23 00:27:00.557998203 -0500 EST
-Original Record:              Alex Jeannopoulos - email: alexj@backpocket.com city: Plantation country: USA age: 48
-Copied Record  :              Alex Jeannopoulos - email: alexj@backpocket.com city: Plantation country: USA age: 48
+
+
+$ ./bin/xml_example    
+File Name      :         person.xml
+Size           :         115
+Original Record:         Homer Simpson - email: homer@simpsons.com city: Springfield country: USA age: 36
+Copied Record  :         Homer Simpson - email: homer@simpsons.com city: Springfield country: USA age: 36
 
 
 Contents
-  <Person first="Alex" last="Jeannopoulos" email="alexj@backpocket.com" city="Plantation" country="USA" age="48"></Person>
-	
+<Person first="Homer" last="Simpson" email="homer@simpsons.com" city="Springfield" country="USA" age="36"></Person>
+
+
+File Name      :         people.xml
+Size           :         598
+Original Record:         members: 5
+Copied Record  :         members: 5
+
+
+File Name      :         5000people.xml
+Size           :         581017
+Original Record:         members: 5000
+Copied Record  :         members: 5000	
 ~~~~
 
 

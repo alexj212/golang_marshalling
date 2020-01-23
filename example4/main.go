@@ -37,8 +37,9 @@ func readProto(filePath string, object proto.Message) error {
 }
 
 func main() {
-	run("/tmp/person.proto", Alex, new(Person))
+	run("/tmp/person.proto", Homer, new(Person))
 	run("/tmp/people.proto", Family, new(People))
+	run("/tmp/5000people.proto", Family5000, new(People))
 }
 
 func run(filename string, orig proto.Message, copiedRecord proto.Message) {
@@ -54,22 +55,33 @@ func run(filename string, orig proto.Message, copiedRecord proto.Message) {
 		log.Fatalf("Error reading file details: %v", err)
 	}
 
-	fmt.Printf("File Name:         %s\n", fileStat.Name())    // Base name of the file
-	fmt.Printf("Size:              %d\n", fileStat.Size())    // Length in bytes for regular files
-	fmt.Printf("Permissions:       %s\n", fileStat.Mode())    // File mode bits
-	fmt.Printf("Last Modified:     %v\n", fileStat.ModTime()) // Last modification time
-
 	err = readProto(filename, copiedRecord)
 	if err != nil {
 		log.Fatalf("Error reading person struct: %v", err)
 	}
 
-	fmt.Printf("Original Record:              %v\n", orig)
-	fmt.Printf("Copied Record  :              %v\n", copiedRecord)
+	fmt.Printf("File Name      :         %s\n", fileStat.Name()) // Base name of the file
+	fmt.Printf("Size           :         %d\n", fileStat.Size()) // Length in bytes for regular files
+
+	origPeople, ok := orig.(*People)
+	if ok {
+		copyPeople := copiedRecord.(*People)
+		fmt.Printf("Original Record:         %d\n", len(origPeople.Members))
+		fmt.Printf("Copied Record  :         %d\n", len(copyPeople.Members))
+	} else {
+		// single person
+		fmt.Printf("Original Record:         1\n")
+		fmt.Printf("Copied Record  :         1\n")
+	}
 
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatalf("Error reading file contents: %v", err)
 	}
-	fmt.Printf("\n\nContents (hex)\n%s\n\n", hex.Dump(content))
+
+	if len(content) < 255 {
+		fmt.Printf("\n\nContents (hex)\n%s\n", hex.Dump(content))
+	}
+
+	fmt.Printf("\n\n")
 }

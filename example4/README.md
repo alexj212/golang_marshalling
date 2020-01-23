@@ -27,29 +27,43 @@ type Person struct {
 
 
 
-var Alex = &Person{
-	FirstName: "Alex",
-	LastName:  "Jeannopoulos",
-	Email:     "alexj@backpocket.com",
-	City:      "Plantation",
+var Homer = &Person{
+	FirstName: "Homer",
+	LastName:  "Simpson",
+	Email:     "homer@simpsons.com",
+	City:      "Springfield",
 	Country:   "USA",
-	Age:       48,
+	Age:       36,
 }
 
-File Name:         person.proto
-Size:              61
-Permissions:       -rw-r--r--
-Last Modified:     2020-01-23 00:30:24.480701141 -0500 EST
-Original Record:              FirstName:"Alex" LastName:"Jeannopoulos" Email:"alexj@backpocket.com" City:"Plantation" Country:"USA" Age:48 
-Copied Record  :              FirstName:"Alex" LastName:"Jeannopoulos" Email:"alexj@backpocket.com" City:"Plantation" Country:"USA" Age:48 
+
+
+
+$ ./bin/protobuf_example     
+File Name      :         person.proto
+Size           :         56
+Original Record:         1
+Copied Record  :         1
 
 
 Contents (hex)
-00000000  0a 04 41 6c 65 78 12 0c  4a 65 61 6e 6e 6f 70 6f  |..Alex..Jeannopo|
-00000010  75 6c 6f 73 1a 14 61 6c  65 78 6a 40 62 61 63 6b  |ulos..alexj@back|
-00000020  70 6f 63 6b 65 74 2e 63  6f 6d 22 0a 50 6c 61 6e  |pocket.com".Plan|
-00000030  74 61 74 69 6f 6e 2a 03  55 53 41 30 30           |tation*.USA00|
+00000000  0a 05 48 6f 6d 65 72 12  07 53 69 6d 70 73 6f 6e  |..Homer..Simpson|
+00000010  1a 12 68 6f 6d 65 72 40  73 69 6d 70 73 6f 6e 73  |..homer@simpsons|
+00000020  2e 63 6f 6d 22 0b 53 70  72 69 6e 67 66 69 65 6c  |.com".Springfiel|
+00000030  64 2a 03 55 53 41 30 24                           |d*.USA0$|
 
+
+
+File Name      :         people.proto
+Size           :         288
+Original Record:         5
+Copied Record  :         5
+
+
+File Name      :         5000people.proto
+Size           :         288000
+Original Record:         5000
+Copied Record  :         5000
 	
 ~~~~
 

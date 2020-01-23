@@ -21,7 +21,7 @@ func writeXml(filePath string, object interface{}) error {
 
 	xmlWriter := io.Writer(file)
 	enc := xml.NewEncoder(xmlWriter)
-	enc.Indent("  ", "    ")
+	//enc.Indent("  ", "    ")
 	if err := enc.Encode(object); err != nil {
 		return err
 	}
@@ -44,8 +44,9 @@ func readXml(filePath string, object interface{}) error {
 }
 
 func main() {
-	run("/tmp/person.xml", Alex, new(Person))
+	run("/tmp/person.xml", Homer, new(Person))
 	run("/tmp/people.xml", Family, new(People))
+	run("/tmp/5000people.xml", Family5000, new(People))
 }
 
 func run(filename string, orig interface{}, copiedRecord interface{}) {
@@ -61,18 +62,15 @@ func run(filename string, orig interface{}, copiedRecord interface{}) {
 		log.Fatalf("Error reading file details: %v", err)
 	}
 
-	fmt.Printf("File Name:         %s\n", fileStat.Name())    // Base name of the file
-	fmt.Printf("Size:              %d\n", fileStat.Size())    // Length in bytes for regular files
-	fmt.Printf("Permissions:       %s\n", fileStat.Mode())    // File mode bits
-	fmt.Printf("Last Modified:     %v\n", fileStat.ModTime()) // Last modification time
-
 	err = readXml(filename, copiedRecord)
 	if err != nil {
 		log.Fatalf("Error reading person struct: %v", err)
 	}
 
-	fmt.Printf("Original Record:              %v\n", orig)
-	fmt.Printf("Copied Record  :              %v\n", copiedRecord)
+	fmt.Printf("File Name      :         %s\n", fileStat.Name()) // Base name of the file
+	fmt.Printf("Size           :         %d\n", fileStat.Size()) // Length in bytes for regular files
+	fmt.Printf("Original Record:         %v\n", orig)
+	fmt.Printf("Copied Record  :         %v\n", copiedRecord)
 
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -80,6 +78,9 @@ func run(filename string, orig interface{}, copiedRecord interface{}) {
 	}
 	// Convert []byte to string and print to screen
 	text := string(content)
-	fmt.Printf("\n\nContents\n%s\n\n", text)
+	if len(content) < 255 {
+		fmt.Printf("\n\nContents\n%s\n", text)
+	}
 
+	fmt.Printf("\n\n")
 }

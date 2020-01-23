@@ -6,13 +6,17 @@ this project provides a Makefile, to perform many common tasks such as running t
     
 ~~~~
 $ make
-build_info                     Build the container
-help                           This help.
+all                            build all examples into ./bin dir.
+build_info                     Display environment variables
 clean                          clean all binaries in bin dir
 clean_binary                   clean binary in bin dir
-test                           run tests
 fmt                            run fmt
-all                            build all
+gob_example                    Build gob_example binary in bin dir.
+help                           This help.
+json_example                   Build json_example binary in bin dir
+protobuf_example               Build protobuf_example binary in bin dir
+test                           run tests
+xml_example                    Build xml_example binary in bin dir
 ~~~~
   
 * [Gob example](./example1/README.md)
@@ -24,9 +28,9 @@ all                            build all
 
 ### Encoding Sizes
 
-|           |Encoding |Single Record   |3 Records  |   |
-|-----------|---------|----------------|-----------|---|
-|example1   |gob      |152             |342        |   |   
-|example2   |xml      |217             |776        |   |   
-|example3   |json     |160             |699        |   |   
-|example4   |protobuf |61              |196        |   |   
+|           |Encoding |Single Record   |5 Records  | 5000 Records  |
+|-----------|---------|----------------|-----------|---------------|
+|example1   |gob      |147 bytes       |442 bytes  | 283162 bytes  |   
+|example2   |xml      |115             |598        | 581017        |   
+|example3   |json     |110             |560        | 546014        |   
+|example4   |protobuf |56              |288        | 288000        |   

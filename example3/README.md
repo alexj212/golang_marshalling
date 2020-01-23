@@ -19,40 +19,49 @@ type Person struct {
 }
 
 
-var Alex = &Person{
-	FirstName:     "Alex",
-	LastName:      "Jeannopoulos",
-	Email:         "alexj@backpocket.com",
-	City:          "Plantation",
-	Country:       "USA",
-	Age:           48,
-	OmittedInt:    156,
-	OmittedString: "not omitted",
-	Excluded:      "hide me",
+var Homer = &Person{
+	FirstName: "Homer",
+	LastName:  "Simpson",
+	Email:     "homer@simpsons.com",
+	City:      "Springfield",
+	Country:   "USA",
+	Age:       36,
 }
 
-File Name:         person.json
-Size:              211
-Permissions:       -rw-rw-r--
-Last Modified:     2020-01-23 00:27:29.471034899 -0500 EST
-Original Record:              Alex Jeannopoulos - email: alexj@backpocket.com city: Plantation country: USA age: 48
-Copied Record  :              Alex Jeannopoulos - email: alexj@backpocket.com city: Plantation country: USA age: 48
+
+$ ./bin/json_example    
+File Name      :         person.json
+Size           :         110
+Original Record:         Homer Simpson - email: homer@simpsons.com city: Springfield country: USA age: 36
+Copied Record  :         Homer Simpson - email: homer@simpsons.com city: Springfield country: USA age: 36
 
 
 Contents
-{
-    "first": "Alex",
-    "last": "Jeannopoulos",
-    "email": "alexj@backpocket.com",
-    "city": "Plantation",
-    "country": "USA",
-    "age": 48,
-    "OmittedInt": 156,
-    "OmittedString": "not omitted"
-}
+{"first":"Homer","last":"Simpson","email":"homer@simpsons.com","city":"Springfield","country":"USA","age":36}
+
+
+
+File Name      :         people.json
+Size           :         560
+Original Record:         members: 5
+Copied Record  :         members: 5
+
+
+File Name      :         5000people.json
+Size           :         546014
+Original Record:         members: 5000
+Copied Record  :         members: 5000
+
+
 
 	
 ~~~~
+
+Struct values encode as JSON objects. Each exported struct field becomes a member of the object unless
+
+the field's tag is "-", or
+the field is empty and its tag specifies the "omitempty" option.
+The empty values are false, 0, any nil pointer or interface value, and any array, slice, map, or string of length zero.
 
 
 

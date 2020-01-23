@@ -47,8 +47,9 @@ func readGob(filePath string, object interface{}) error {
 }
 
 func main() {
-	run("/tmp/person.gob", Alex, new(Person))
+	run("/tmp/person.gob", Homer, new(Person))
 	run("/tmp/people.gob", Family, new(People))
+	run("/tmp/5000people.gob", Family5000, new(People))
 }
 
 func run(filename string, orig interface{}, copiedRecord interface{}) {
@@ -64,22 +65,23 @@ func run(filename string, orig interface{}, copiedRecord interface{}) {
 		log.Fatalf("Error reading file details: %v", err)
 	}
 
-	fmt.Printf("File Name:         %s\n", fileStat.Name())    // Base name of the file
-	fmt.Printf("Size:              %d\n", fileStat.Size())    // Length in bytes for regular files
-	fmt.Printf("Permissions:       %s\n", fileStat.Mode())    // File mode bits
-	fmt.Printf("Last Modified:     %v\n", fileStat.ModTime()) // Last modification time
-
 	err = readGob(filename, copiedRecord)
 	if err != nil {
 		log.Fatalf("Error reading person struct: %v", err)
 	}
 
-	fmt.Printf("Original Record:              %v\n", orig)
-	fmt.Printf("Copied Record  :              %v\n", copiedRecord)
+	fmt.Printf("File Name      :         %s\n", fileStat.Name()) // Base name of the file
+	fmt.Printf("Size           :         %d\n", fileStat.Size()) // Length in bytes for regular files
+	fmt.Printf("Original Record:         %v\n", orig)
+	fmt.Printf("Copied Record  :         %v\n", copiedRecord)
 
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatalf("Error reading file contents: %v", err)
 	}
-	fmt.Printf("\n\nContents (hex)\n%s\n\n", hex.Dump(content))
+	if len(content) < 255 {
+		fmt.Printf("\n\nContents (hex)\n%s\n", hex.Dump(content))
+	}
+
+	fmt.Printf("\n\n")
 }

@@ -16,6 +16,10 @@ message Person {
     string City = 4;
     string Country = 5;
     int32 Age = 6;
+    int32 omittedInt = 7;
+    string omittedString = 8;
+    string excluded = 9;
+    string private = 10;
 }
 
 

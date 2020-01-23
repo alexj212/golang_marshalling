@@ -854,6 +854,41 @@ public final class Data {
      * <code>int32 Age = 6;</code>
      */
     int getAge();
+
+    /**
+     * <code>int32 omittedInt = 7;</code>
+     */
+    int getOmittedInt();
+
+    /**
+     * <code>string omittedString = 8;</code>
+     */
+    java.lang.String getOmittedString();
+    /**
+     * <code>string omittedString = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getOmittedStringBytes();
+
+    /**
+     * <code>string excluded = 9;</code>
+     */
+    java.lang.String getExcluded();
+    /**
+     * <code>string excluded = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getExcludedBytes();
+
+    /**
+     * <code>string private = 10;</code>
+     */
+    java.lang.String getPrivate();
+    /**
+     * <code>string private = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getPrivateBytes();
   }
   /**
    * Protobuf type {@code main.Person}
@@ -874,6 +909,10 @@ public final class Data {
       city_ = "";
       country_ = "";
       age_ = 0;
+      omittedInt_ = 0;
+      omittedString_ = "";
+      excluded_ = "";
+      private_ = "";
     }
 
     @java.lang.Override
@@ -933,6 +972,29 @@ public final class Data {
             case 48: {
 
               age_ = input.readInt32();
+              break;
+            }
+            case 56: {
+
+              omittedInt_ = input.readInt32();
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              omittedString_ = s;
+              break;
+            }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              excluded_ = s;
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              private_ = s;
               break;
             }
             default: {
@@ -1146,6 +1208,117 @@ public final class Data {
       return age_;
     }
 
+    public static final int OMITTEDINT_FIELD_NUMBER = 7;
+    private int omittedInt_;
+    /**
+     * <code>int32 omittedInt = 7;</code>
+     */
+    public int getOmittedInt() {
+      return omittedInt_;
+    }
+
+    public static final int OMITTEDSTRING_FIELD_NUMBER = 8;
+    private volatile java.lang.Object omittedString_;
+    /**
+     * <code>string omittedString = 8;</code>
+     */
+    public java.lang.String getOmittedString() {
+      java.lang.Object ref = omittedString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        omittedString_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string omittedString = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOmittedStringBytes() {
+      java.lang.Object ref = omittedString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        omittedString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EXCLUDED_FIELD_NUMBER = 9;
+    private volatile java.lang.Object excluded_;
+    /**
+     * <code>string excluded = 9;</code>
+     */
+    public java.lang.String getExcluded() {
+      java.lang.Object ref = excluded_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        excluded_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string excluded = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getExcludedBytes() {
+      java.lang.Object ref = excluded_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        excluded_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PRIVATE_FIELD_NUMBER = 10;
+    private volatile java.lang.Object private_;
+    /**
+     * <code>string private = 10;</code>
+     */
+    public java.lang.String getPrivate() {
+      java.lang.Object ref = private_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        private_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string private = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPrivateBytes() {
+      java.lang.Object ref = private_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        private_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1178,6 +1351,18 @@ public final class Data {
       if (age_ != 0) {
         output.writeInt32(6, age_);
       }
+      if (omittedInt_ != 0) {
+        output.writeInt32(7, omittedInt_);
+      }
+      if (!getOmittedStringBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, omittedString_);
+      }
+      if (!getExcludedBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, excluded_);
+      }
+      if (!getPrivateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, private_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1205,6 +1390,19 @@ public final class Data {
       if (age_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, age_);
+      }
+      if (omittedInt_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, omittedInt_);
+      }
+      if (!getOmittedStringBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, omittedString_);
+      }
+      if (!getExcludedBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, excluded_);
+      }
+      if (!getPrivateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, private_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1234,6 +1432,14 @@ public final class Data {
           .equals(other.getCountry());
       result = result && (getAge()
           == other.getAge());
+      result = result && (getOmittedInt()
+          == other.getOmittedInt());
+      result = result && getOmittedString()
+          .equals(other.getOmittedString());
+      result = result && getExcluded()
+          .equals(other.getExcluded());
+      result = result && getPrivate()
+          .equals(other.getPrivate());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1257,6 +1463,14 @@ public final class Data {
       hash = (53 * hash) + getCountry().hashCode();
       hash = (37 * hash) + AGE_FIELD_NUMBER;
       hash = (53 * hash) + getAge();
+      hash = (37 * hash) + OMITTEDINT_FIELD_NUMBER;
+      hash = (53 * hash) + getOmittedInt();
+      hash = (37 * hash) + OMITTEDSTRING_FIELD_NUMBER;
+      hash = (53 * hash) + getOmittedString().hashCode();
+      hash = (37 * hash) + EXCLUDED_FIELD_NUMBER;
+      hash = (53 * hash) + getExcluded().hashCode();
+      hash = (37 * hash) + PRIVATE_FIELD_NUMBER;
+      hash = (53 * hash) + getPrivate().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1402,6 +1616,14 @@ public final class Data {
 
         age_ = 0;
 
+        omittedInt_ = 0;
+
+        omittedString_ = "";
+
+        excluded_ = "";
+
+        private_ = "";
+
         return this;
       }
 
@@ -1434,6 +1656,10 @@ public final class Data {
         result.city_ = city_;
         result.country_ = country_;
         result.age_ = age_;
+        result.omittedInt_ = omittedInt_;
+        result.omittedString_ = omittedString_;
+        result.excluded_ = excluded_;
+        result.private_ = private_;
         onBuilt();
         return result;
       }
@@ -1504,6 +1730,21 @@ public final class Data {
         }
         if (other.getAge() != 0) {
           setAge(other.getAge());
+        }
+        if (other.getOmittedInt() != 0) {
+          setOmittedInt(other.getOmittedInt());
+        }
+        if (!other.getOmittedString().isEmpty()) {
+          omittedString_ = other.omittedString_;
+          onChanged();
+        }
+        if (!other.getExcluded().isEmpty()) {
+          excluded_ = other.excluded_;
+          onChanged();
+        }
+        if (!other.getPrivate().isEmpty()) {
+          private_ = other.private_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1904,6 +2145,239 @@ public final class Data {
         onChanged();
         return this;
       }
+
+      private int omittedInt_ ;
+      /**
+       * <code>int32 omittedInt = 7;</code>
+       */
+      public int getOmittedInt() {
+        return omittedInt_;
+      }
+      /**
+       * <code>int32 omittedInt = 7;</code>
+       */
+      public Builder setOmittedInt(int value) {
+        
+        omittedInt_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 omittedInt = 7;</code>
+       */
+      public Builder clearOmittedInt() {
+        
+        omittedInt_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object omittedString_ = "";
+      /**
+       * <code>string omittedString = 8;</code>
+       */
+      public java.lang.String getOmittedString() {
+        java.lang.Object ref = omittedString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          omittedString_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string omittedString = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOmittedStringBytes() {
+        java.lang.Object ref = omittedString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          omittedString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string omittedString = 8;</code>
+       */
+      public Builder setOmittedString(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        omittedString_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string omittedString = 8;</code>
+       */
+      public Builder clearOmittedString() {
+        
+        omittedString_ = getDefaultInstance().getOmittedString();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string omittedString = 8;</code>
+       */
+      public Builder setOmittedStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        omittedString_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object excluded_ = "";
+      /**
+       * <code>string excluded = 9;</code>
+       */
+      public java.lang.String getExcluded() {
+        java.lang.Object ref = excluded_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          excluded_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string excluded = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getExcludedBytes() {
+        java.lang.Object ref = excluded_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          excluded_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string excluded = 9;</code>
+       */
+      public Builder setExcluded(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        excluded_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string excluded = 9;</code>
+       */
+      public Builder clearExcluded() {
+        
+        excluded_ = getDefaultInstance().getExcluded();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string excluded = 9;</code>
+       */
+      public Builder setExcludedBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        excluded_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object private_ = "";
+      /**
+       * <code>string private = 10;</code>
+       */
+      public java.lang.String getPrivate() {
+        java.lang.Object ref = private_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          private_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string private = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPrivateBytes() {
+        java.lang.Object ref = private_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          private_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string private = 10;</code>
+       */
+      public Builder setPrivate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        private_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string private = 10;</code>
+       */
+      public Builder clearPrivate() {
+        
+        private_ = getDefaultInstance().getPrivate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string private = 10;</code>
+       */
+      public Builder setPrivateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        private_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1977,10 +2451,12 @@ public final class Data {
   static {
     java.lang.String[] descriptorData = {
       "\n\ndata.proto\022\004main\"\'\n\006People\022\035\n\007Members\030" +
-      "\001 \003(\0132\014.main.Person\"h\n\006Person\022\021\n\tFirstNa" +
-      "me\030\001 \001(\t\022\020\n\010LastName\030\002 \001(\t\022\r\n\005Email\030\003 \001(" +
-      "\t\022\014\n\004City\030\004 \001(\t\022\017\n\007Country\030\005 \001(\t\022\013\n\003Age\030" +
-      "\006 \001(\005B\025\n\023com.backpocket.datab\006proto3"
+      "\001 \003(\0132\014.main.Person\"\266\001\n\006Person\022\021\n\tFirstN" +
+      "ame\030\001 \001(\t\022\020\n\010LastName\030\002 \001(\t\022\r\n\005Email\030\003 \001" +
+      "(\t\022\014\n\004City\030\004 \001(\t\022\017\n\007Country\030\005 \001(\t\022\013\n\003Age" +
+      "\030\006 \001(\005\022\022\n\nomittedInt\030\007 \001(\005\022\025\n\romittedStr" +
+      "ing\030\010 \001(\t\022\020\n\010excluded\030\t \001(\t\022\017\n\007private\030\n" +
+      " \001(\tB\025\n\023com.backpocket.datab\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2005,7 +2481,7 @@ public final class Data {
     internal_static_main_Person_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_main_Person_descriptor,
-        new java.lang.String[] { "FirstName", "LastName", "Email", "City", "Country", "Age", });
+        new java.lang.String[] { "FirstName", "LastName", "Email", "City", "Country", "Age", "OmittedInt", "OmittedString", "Excluded", "Private", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

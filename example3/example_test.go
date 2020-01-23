@@ -7,7 +7,7 @@ import (
 
 func TestWriteAndReadJson(t *testing.T) {
 	filename := "/tmp/person.json"
-	src := Alex
+	src := Homer
 	copy := new(Person)
 
 	var err error
@@ -23,7 +23,7 @@ func TestWriteAndReadJson(t *testing.T) {
 func TestWriteJson(t *testing.T) {
 	var err error
 
-	err = writeJson("/tmp/person.json", Alex)
+	err = writeJson("/tmp/person.json", Homer)
 	assert.NoError(t, err, "failed writing json")
 }
 

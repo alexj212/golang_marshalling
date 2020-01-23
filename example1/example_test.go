@@ -7,7 +7,7 @@ import (
 
 func TestWriteAndReadGob(t *testing.T) {
 	filename := "/tmp/person.gob"
-	src := Alex
+	src := Homer
 	copy := new(Person)
 
 	var err error
@@ -24,7 +24,7 @@ func TestWriteGob(t *testing.T) {
 
 	var err error
 
-	err = writeGob("/tmp/person.gob", Alex)
+	err = writeGob("/tmp/person.gob", Homer)
 	assert.NoError(t, err, "failed writing gob")
 }
 

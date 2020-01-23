@@ -4,38 +4,51 @@ This example will marshal a struct to a file on the disk and also unmarshalling 
 
 	
 ~~~~
-var Alex = &Person{
-	FirstName: "Alex",
-	LastName:  "Jeannopoulos",
-	Email:     "alexj@backpocket.com",
-	City:      "Plantation",
+
+var Homer = &Person{
+	FirstName: "Homer",
+	LastName:  "Simpson",
+	Email:     "homer@simpsons.com",
+	City:      "Springfield",
 	Country:   "USA",
-	Age:       48,
+	Age:       36,
 }
 
 
 
-
-  File Name:         person.gob
-  Size:              152
-  Permissions:       -rw-rw-r--
-  Last Modified:     2020-01-23 00:22:05.139410546 -0500 EST
-  Original Record:              Alex Jeannopoulos - email: alexj@backpocket.com city: Plantation country: USA age: 48
-  Copied Record  :              Alex Jeannopoulos - email: alexj@backpocket.com city: Plantation country: USA age: 48
+$ ./bin/gob_example         
+File Name      :         person.gob
+Size           :         147
+Original Record:         Homer Simpson - email: homer@simpsons.com city: Springfield country: USA age: 36
+Copied Record  :         Homer Simpson - email: homer@simpsons.com city: Springfield country: USA age: 36
 
 
-  Contents (hex)
-  00000000  56 ff 81 03 01 01 06 50  65 72 73 6f 6e 01 ff 82  |V......Person...|
-  00000010  00 01 06 01 09 46 69 72  73 74 4e 61 6d 65 01 0c  |.....FirstName..|
-  00000020  00 01 08 4c 61 73 74 4e  61 6d 65 01 0c 00 01 05  |...LastName.....|
-  00000030  45 6d 61 69 6c 01 0c 00  01 04 43 69 74 79 01 0c  |Email.....City..|
-  00000040  00 01 07 43 6f 75 6e 74  72 79 01 0c 00 01 03 41  |...Country.....A|
-  00000050  67 65 01 04 00 00 00 40  ff 82 01 04 41 6c 65 78  |ge.....@....Alex|
-  00000060  01 0c 4a 65 61 6e 6e 6f  70 6f 75 6c 6f 73 01 14  |..Jeannopoulos..|
-  00000070  61 6c 65 78 6a 40 62 61  63 6b 70 6f 63 6b 65 74  |alexj@backpocket|
-  00000080  2e 63 6f 6d 01 0a 50 6c  61 6e 74 61 74 69 6f 6e  |.com..Plantation|
-  00000090  01 03 55 53 41 01 60 00                           |..USA.`.|
-	
+Contents (hex)
+00000000  56 ff 81 03 01 01 06 50  65 72 73 6f 6e 01 ff 82  |V......Person...|
+00000010  00 01 06 01 09 46 69 72  73 74 4e 61 6d 65 01 0c  |.....FirstName..|
+00000020  00 01 08 4c 61 73 74 4e  61 6d 65 01 0c 00 01 05  |...LastName.....|
+00000030  45 6d 61 69 6c 01 0c 00  01 04 43 69 74 79 01 0c  |Email.....City..|
+00000040  00 01 07 43 6f 75 6e 74  72 79 01 0c 00 01 03 41  |...Country.....A|
+00000050  67 65 01 04 00 00 00 3b  ff 82 01 05 48 6f 6d 65  |ge.....;....Home|
+00000060  72 01 07 53 69 6d 70 73  6f 6e 01 12 68 6f 6d 65  |r..Simpson..home|
+00000070  72 40 73 69 6d 70 73 6f  6e 73 2e 63 6f 6d 01 0b  |r@simpsons.com..|
+00000080  53 70 72 69 6e 67 66 69  65 6c 64 01 03 55 53 41  |Springfield..USA|
+00000090  01 48 00                                          |.H.|
+
+
+
+File Name      :         people.gob
+Size           :         442
+Original Record:         members: 5
+Copied Record  :         members: 5
+
+
+File Name      :         5000people.gob
+Size           :         283162
+Original Record:         members: 5000
+Copied Record  :         members: 5000
+
+
 ~~~~
 
 
