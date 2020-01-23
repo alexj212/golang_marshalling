@@ -1,4 +1,10 @@
 ## Golang Data Marshalling
+This repo is a collection of examples of marshalling golang structs to a file. The examples use several formats such as GOB, XML, Json and Protocol Buffers and will encode and decode a struct to a []byte, and write that to disk.   
+
+[Slide Deck](https://docs.google.com/presentation/d/e/2PACX-1vQbl58wkTwbOwhlQXfxNgcSkMdmiazT-4MGkF-_x5B0fiBYzBUaFr7kNdbxNy7dgQDmrcNvJpg28e17/pub?start=false&loop=false&delayms=3000)
+
+First presented to the Go Miami/FLL Meetup on Jan 23, 2020. 
+
 
 
 ###Building Examples

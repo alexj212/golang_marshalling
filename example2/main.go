@@ -36,8 +36,15 @@ func readXml(filePath string, object interface{}) error {
 		return err
 	}
 
-	rawXmlBytes, _ := ioutil.ReadAll(file)
-	xml.Unmarshal(rawXmlBytes, object)
+	rawXmlBytes, err := ioutil.ReadAll(file)
+	if err != nil {
+		return err
+	}
+
+	err = xml.Unmarshal(rawXmlBytes, object)
+	if err != nil {
+		return err
+	}
 
 	err = file.Close()
 	return err

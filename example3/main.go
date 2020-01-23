@@ -36,8 +36,15 @@ func readJson(filePath string, object interface{}) error {
 		return err
 	}
 
-	rawJsonBytes, _ := ioutil.ReadAll(file)
-	json.Unmarshal(rawJsonBytes, object)
+	rawJsonBytes, err := ioutil.ReadAll(file)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(rawJsonBytes, object)
+	if err != nil {
+		return err
+	}
 
 	err = file.Close()
 	return err
