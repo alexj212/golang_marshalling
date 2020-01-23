@@ -17,7 +17,7 @@ export BUILD_NUMBER := ${BRANCH}-${COMMIT_CNT}
 
 
 
-build_info: ## Build the container
+build_info: ## Display environment variables
 	@echo ''
 	@echo '---------------------------------------------------------'
 	@echo 'BUILT_ON_IP       $(BUILT_ON_IP)'
@@ -40,8 +40,10 @@ build_info: ## Build the container
 ####################################################################################################################
 .PHONY: help
 
+##help: ## This help.
+##	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 help: ## This help.
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .DEFAULT_GOAL := help
 
@@ -56,40 +58,8 @@ help: ## This help.
 create_dir:
 	@mkdir -p $(BIN_DIR)
 
-
-
 build_app: create_dir
 	go build -o $(BIN_DIR)/$(BIN_NAME) -a $(APP_PATH)
-
-
-
-
-example1: build_info ## build example1 binaries in bin dir
-	@echo "build example1"
-	make BIN_NAME=example1       APP_PATH=$(PROJ_PATH)/example1 build_app
-	@echo ''
-	@echo ''
-
-example2: build_info ## build example2 binaries in bin dir
-	@echo "build example2"
-	make BIN_NAME=example2       APP_PATH=$(PROJ_PATH)/example2 build_app
-	@echo ''
-	@echo ''
-
-example3: build_info ## build example3 binaries in bin dir
-	@echo "build example3"
-	make BIN_NAME=example3       APP_PATH=$(PROJ_PATH)/example3 build_app
-	@echo ''
-	@echo ''
-
-
-example4: build_info ## build example4 binaries in bin dir
-	@echo "build example4"
-	@protoc -I./example4   --go_out=./example4    ./example4/data.proto
-	@protoc -I./example4   --java_out=./example4  ./example4/data.proto
-	make BIN_NAME=example4       APP_PATH=$(PROJ_PATH)/example4 build_app
-	@echo ''
-	@echo ''
 
 
 ####################################################################################################################
@@ -112,4 +82,33 @@ fmt: ## run fmt
 	go fmt $(PROJ_PATH)/...
 
 
-all: example1 example2 example3## build all
+all: gob_example xml_example json_example protobuf_example ## build all examples into ./bin dir.
+
+
+gob_example: build_info ## Build gob_example binary in bin dir.
+	@echo "build gob_example"
+	make BIN_NAME=gob_example       APP_PATH=$(PROJ_PATH)/example1 build_app
+	@echo ''
+	@echo ''
+
+xml_example: build_info ## Build xml_example binary in bin dir
+	@echo "build xml_example"
+	make BIN_NAME=xml_example       APP_PATH=$(PROJ_PATH)/example2 build_app
+	@echo ''
+	@echo ''
+
+json_example: build_info ## Build json_example binary in bin dir
+	@echo "build json_example"
+	make BIN_NAME=json_example       APP_PATH=$(PROJ_PATH)/example3 build_app
+	@echo ''
+	@echo ''
+
+
+protobuf_example: build_info## Build protobuf_example binary in bin dir
+	@echo "build protobuf_example"
+	@protoc -I./example4   --go_out=./example4    ./example4/data.proto
+	@protoc -I./example4   --java_out=./example4  ./example4/data.proto
+	make BIN_NAME=protobuf_example       APP_PATH=$(PROJ_PATH)/example4 build_app
+	@echo ''
+	@echo ''
+
