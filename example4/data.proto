@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package main;
+
+
+option java_package = "com.backpocket.data";
+
+message People {
+    repeated Person Members = 1;
+}
+
+message Person {
+    string FirstName = 1;
+    string LastName = 2;
+    string Email = 3;
+    string City = 4;
+    string Country = 5;
+    int32 Age = 6;
+}
+
+
